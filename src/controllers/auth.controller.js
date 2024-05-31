@@ -16,7 +16,7 @@ async function httpLogin(req, res) {
     // if email matches an email in the database, check whether the password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).jsn({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
     // get payload
@@ -34,3 +34,5 @@ async function httpLogin(req, res) {
     res.status(500).json({ message: "Server error" });
   }
 }
+
+modules.exports = httpLogin
